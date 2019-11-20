@@ -8,7 +8,6 @@ namespace RPSLSGame
 {
     class AI : Player
     {
-
         public AI()
         {
 
@@ -16,7 +15,9 @@ namespace RPSLSGame
 
         public override void MakeSelection()
         {
-
+            Random random = new Random();
+            int selectFromList = random.Next(0, 4);
+            gestureSelection = gestures[selectFromList];
         }
     }
 }

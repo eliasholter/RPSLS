@@ -54,15 +54,23 @@ namespace RPSLSGame
 
         public void RunGame()
         {
-            while (scoreOne != 3 || scoreTwo != 3)
+            while (scoreOne < 3 && scoreTwo < 3)
             {
                 Console.WriteLine("Player One Score: " + scoreOne + "   Player 2 Score: " + scoreTwo);
+                Console.WriteLine("");
                 player1.MakeSelection();
+                Console.Clear();
+                Console.WriteLine("Player One Score: " + scoreOne + "   Player 2 Score: " + scoreTwo);
+                Console.WriteLine("");
                 player2.MakeSelection();
+                Console.Clear();
+                Console.WriteLine("Player One Score: " + scoreOne + "   Player 2 Score: " + scoreTwo);
+                Console.WriteLine("");
                 choiceOne = player1.gestureSelection;
                 choiceTwo = player2.gestureSelection;
 
-                Console.WriteLine(choiceOne + "VS." + choiceTwo);
+                Console.WriteLine(choiceOne + " VS. " + choiceTwo);
+                Console.WriteLine("");
 
                 if ((choiceOne == "rock" && choiceTwo == "scissors") || (choiceOne == "scissors" && choiceTwo == "paper") || (choiceOne == "paper" && choiceTwo == "rock") || (choiceOne == "rock" && choiceTwo == "lizard") || (choiceOne == "lizard" && choiceTwo == "spock") || (choiceOne == "spock" && choiceTwo == "scissors") || (choiceOne == "scissors" && choiceTwo == "lizard") || (choiceOne == "lizard" && choiceTwo == "paper") || (choiceOne == "paper" && choiceTwo == "spock") || (choiceOne == "spock" && choiceTwo == "rock"))
                 {
@@ -84,6 +92,19 @@ namespace RPSLSGame
                     Console.ReadLine();
                     Console.Clear();
                 }
+            }
+
+            if(scoreOne > scoreTwo)
+            {
+                Console.Clear();
+                Console.WriteLine("Player 1 Wins The Game!");
+                Console.ReadLine();
+            }
+            else
+            {
+                Console.Clear();
+                Console.WriteLine("Player 2 Wins The Game!");
+                Console.ReadLine();
             }
         }
 
