@@ -8,8 +8,8 @@ namespace RPSLSGame
 {
     public abstract class Player
     {
-        List<string> gestures = new List<string>() { "rock", "paper", "scissors", "lizard", "spock" };
-        int gestureSelection;
+        public List<string> gestures = new List<string>() { "rock", "paper", "scissors", "lizard", "spock" };
+        public string gestureSelection;
 
 
         public abstract void MakeSelection();
