@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace RPSLSGame
 {
-    class Player
+    public abstract class Player
     {
+        List<string> gestures = new List<string>() { "rock", "paper", "scissors", "lizard", "spock" };
+        int gestureSelection;
+
+
+        public abstract void MakeSelection();
     }
 }

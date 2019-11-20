@@ -8,5 +8,23 @@ namespace RPSLSGame
 {
     class Game
     {
+        int scoreOne;
+        int scoreTwo;
+
+        public Game()
+        {
+            scoreOne = 0;
+            scoreTwo = 0;            
+        }
+
+        public void RunPvPGame()
+        {
+
+        }
+
+        public void RunAIGame()
+        {
+
+        }
     }
 }

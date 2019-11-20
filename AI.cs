@@ -6,7 +6,17 @@ using System.Threading.Tasks;
 
 namespace RPSLSGame
 {
-    class AI
+    class AI : Player
     {
+
+        public AI()
+        {
+
+        }
+
+        public override void MakeSelection()
+        {
+
+        }
     }
 }

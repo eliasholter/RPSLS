@@ -6,7 +6,17 @@ using System.Threading.Tasks;
 
 namespace RPSLSGame
 {
-    class Human
+    class Human : Player
     {
+
+        public Human()
+        {
+
+        }
+
+        public override void MakeSelection()
+        {
+
+        }
     }
 }
