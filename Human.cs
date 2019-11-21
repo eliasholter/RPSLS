@@ -30,7 +30,9 @@ namespace RPSLSGame
                     i++;
                 }
 
+                Console.ForegroundColor = ConsoleColor.Black;
                 gestureSelection = Console.ReadLine();
+                Console.ForegroundColor = ConsoleColor.White;
                 Console.Clear();
 
                 switch (gestureSelection)
@@ -71,10 +73,9 @@ namespace RPSLSGame
             }
         }
 
-        public override void ChooseName()
+        public override void ChooseName()        
         {
             Console.WriteLine("Please enter your name: \n\n");
-            Console.WriteLine("");
             name = Console.ReadLine();
         }
     }

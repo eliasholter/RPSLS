@@ -14,7 +14,9 @@ namespace RPSLSGame
         string choiceOne;
         string choiceTwo;
         string whoToPlay;
+        string userRoundsChoice;
         bool validInput;
+        bool validRoundInput;
         bool playAgain;
         public Player player1;
         public Player player2;
@@ -112,10 +114,12 @@ namespace RPSLSGame
         {
             while (validInput == false)
             {
-                Console.WriteLine("Please select the amount of rounds you would like to play (Must be greater than 3):");
-                roundsToPlay = Int32.Parse(Console.ReadLine());
+                Console.WriteLine("Please select the amount of rounds you would like to play (Must be at least 3):"); // possibly create list of options instead
+                userRoundsChoice = Console.ReadLine();
+                validRoundInput = int.TryParse(userRoundsChoice, out roundsToPlay);
+                Console.Clear();
 
-                if (roundsToPlay.GetType() == typeof(int))
+                if (validRoundInput == true && roundsToPlay >= 3)
                 {
                     return;
                 }
