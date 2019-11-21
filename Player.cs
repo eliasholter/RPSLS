@@ -10,7 +10,12 @@ namespace RPSLSGame
     {
         public List<string> gestures = new List<string>() { "rock", "paper", "scissors", "lizard", "spock" };
         public string gestureSelection;
+        public string name;
+        public bool validGesture;
+        
 
         public abstract void MakeSelection();
+
+        public abstract void ChooseName();
     }
 }

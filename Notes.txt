@@ -1,0 +1,18 @@
+Classes
+-Game
+	-possible "run" method
+-Player 
+	-gesture list goes here
+-Human (inherit from player)
+-AI (inherit from player)
+
+
+1)Rock
+2)Paper
+3)Scissors
+4)Lizard
+5)Spock
+
+
+
+*make sure to clear console to avoid screen peaking player v player

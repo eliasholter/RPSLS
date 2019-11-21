@@ -14,6 +14,7 @@ namespace RPSLSGame
         string choiceTwo;
         string whoToPlay;
         bool validGameStart;
+        bool playAgain;
         public Player player1;
         public Player player2;
 
@@ -23,114 +24,123 @@ namespace RPSLSGame
             scoreOne = 0;
             scoreTwo = 0;
             validGameStart = false;
+            playAgain = false;
             player1 = new Human();
 
-            Console.WriteLine("Who would you like to play? Please enter 'friend' or 'computer':");
-            whoToPlay = Console.ReadLine().ToLower();
+            //Console.WriteLine("Who would you like to play? Please enter 'friend' or 'computer':");
+            //whoToPlay = Console.ReadLine().ToLower();
 
-            while (validGameStart == false)
-            {
-                switch (whoToPlay)
-                {
-                    case "friend":
-                        Console.Clear();
-                        validGameStart = true;
-                        player2 = new Human();
-                        break;
-                    case "computer":
-                        Console.Clear();
-                        validGameStart = true;
-                        player2 = new AI();
-                        break;
-                    default:
-                        Console.Clear();
-                        Console.WriteLine("That is not a valid selection.");
-                        Console.WriteLine("Who would you like to play? Please enter 'friend' or 'computer':");
-                        whoToPlay = Console.ReadLine().ToLower();
-                        break;
-                }
-            }
+            //while (validGameStart == false)
+            //{
+            //    switch (whoToPlay)
+            //    {
+            //        case "friend":
+            //            Console.Clear();
+            //            validGameStart = true;
+            //            player2 = new Human();
+            //            break;
+            //        case "computer":
+            //            Console.Clear();
+            //            validGameStart = true;
+            //            player2 = new AI();
+            //            break;
+            //        default:
+            //            Console.Clear();
+            //            Console.WriteLine("That is not a valid selection.");
+            //            Console.WriteLine("Who would you like to play? Please enter 'friend' or 'computer':");
+            //            whoToPlay = Console.ReadLine().ToLower();
+            //            break;
+            //    }
+            //}
         }
 
         public void RunGame()
         {
-            while (scoreOne < 3 && scoreTwo < 3)
+            while (playAgain == true)
             {
-                Console.WriteLine("Player One Score: " + scoreOne + "   Player 2 Score: " + scoreTwo);
-                Console.WriteLine("");
-                player1.MakeSelection();
-                Console.Clear();
-                Console.WriteLine("Player One Score: " + scoreOne + "   Player 2 Score: " + scoreTwo);
-                Console.WriteLine("");
-                player2.MakeSelection();
-                Console.Clear();
-                Console.WriteLine("Player One Score: " + scoreOne + "   Player 2 Score: " + scoreTwo);
-                Console.WriteLine("");
-                choiceOne = player1.gestureSelection;
-                choiceTwo = player2.gestureSelection;
+                Console.WriteLine("Who would you like to play? Please enter 'friend' or 'computer':");
+                whoToPlay = Console.ReadLine().ToLower();
 
-                Console.WriteLine(choiceOne + " VS. " + choiceTwo);
-                Console.WriteLine("");
-
-                if ((choiceOne == "rock" && choiceTwo == "scissors") || (choiceOne == "scissors" && choiceTwo == "paper") || (choiceOne == "paper" && choiceTwo == "rock") || (choiceOne == "rock" && choiceTwo == "lizard") || (choiceOne == "lizard" && choiceTwo == "spock") || (choiceOne == "spock" && choiceTwo == "scissors") || (choiceOne == "scissors" && choiceTwo == "lizard") || (choiceOne == "lizard" && choiceTwo == "paper") || (choiceOne == "paper" && choiceTwo == "spock") || (choiceOne == "spock" && choiceTwo == "rock"))
+                while (validGameStart == false)
                 {
-                    scoreOne += 1;
-                    Console.WriteLine("Player 1 Wins The Round!");
-                    Console.ReadLine();
-                    Console.Clear();
+                    switch (whoToPlay)
+                    {
+                        case "friend":
+                            Console.Clear();
+                            validGameStart = true;
+                            player2 = new Human();
+                            break;
+                        case "computer":
+                            Console.Clear();
+                            validGameStart = true;
+                            player2 = new AI();
+                            break;
+                        default:
+                            Console.Clear();
+                            Console.WriteLine("That is not a valid selection.");
+                            Console.WriteLine("Who would you like to play? Please enter 'friend' or 'computer':");
+                            whoToPlay = Console.ReadLine().ToLower();
+                            break;
+                    }
                 }
-                else if (choiceOne == choiceTwo)
+
+                player1.ChooseName();
+                Console.Clear();
+                player2.ChooseName();
+                Console.Clear();
+
+                while (scoreOne < 3 && scoreTwo < 3)
                 {
-                    Console.WriteLine("The Round Ended In A Tie!");
-                    Console.ReadLine();
+                    Console.WriteLine(player1.name + " Score: " + scoreOne + "   " + player2.name + " Score: " + scoreTwo + "\n\n");
+                    Console.WriteLine(player1.name + "'s turn\n\n");
+                    player1.MakeSelection();
                     Console.Clear();
+                    Console.WriteLine(player1.name + " Score: " + scoreOne + "   " + player2.name + " Score: " + scoreTwo + "\n\n");
+                    Console.WriteLine(player2.name + "'s turn\n\n");
+                    player2.MakeSelection();
+                    Console.Clear();
+                    Console.WriteLine(player1.name + " Score: " + scoreOne + "   " + player2.name + " Score: " + scoreTwo + "\n\n");
+                    choiceOne = player1.gestureSelection;
+                    choiceTwo = player2.gestureSelection;
+
+                    Console.WriteLine(choiceOne + " VS. " + choiceTwo + "\n\n");
+
+                    if ((choiceOne == "rock" && choiceTwo == "scissors") || (choiceOne == "scissors" && choiceTwo == "paper") || (choiceOne == "paper" && choiceTwo == "rock") || (choiceOne == "rock" && choiceTwo == "lizard") || (choiceOne == "lizard" && choiceTwo == "spock") || (choiceOne == "spock" && choiceTwo == "scissors") || (choiceOne == "scissors" && choiceTwo == "lizard") || (choiceOne == "lizard" && choiceTwo == "paper") || (choiceOne == "paper" && choiceTwo == "spock") || (choiceOne == "spock" && choiceTwo == "rock"))
+                    {
+                        scoreOne += 1;
+                        Console.WriteLine("Player 1 Wins The Round!");
+                        Console.ReadLine();
+                        Console.Clear();
+                    }
+                    else if (choiceOne == choiceTwo)
+                    {
+                        Console.WriteLine("The Round Ended In A Tie!");
+                        Console.ReadLine();
+                        Console.Clear();
+                    }
+                    else
+                    {
+                        scoreTwo += 1;
+                        Console.WriteLine("Player 2 Wins The Round!");
+                        Console.ReadLine();
+                        Console.Clear();
+                    }
+                }
+
+                if (scoreOne > scoreTwo)
+                {
+                    Console.Clear();
+                    Console.WriteLine("Player 1 Wins The Game!");
+                    Console.ReadLine();
                 }
                 else
                 {
-                    scoreTwo += 1;
-                    Console.WriteLine("Player 2 Wins The Round!");
-                    Console.ReadLine();
                     Console.Clear();
+                    Console.WriteLine("Player 2 Wins The Game!");
+                    Console.ReadLine();
                 }
-            }
 
-            if(scoreOne > scoreTwo)
-            {
-                Console.Clear();
-                Console.WriteLine("Player 1 Wins The Game!");
-                Console.ReadLine();
-            }
-            else
-            {
-                Console.Clear();
-                Console.WriteLine("Player 2 Wins The Game!");
-                Console.ReadLine();
             }
         }
-
-        //public int FindRoundWinner(int choiceOne, int choiceTwo)
-        //{
-        //    if((choiceOne == 1 && choiceTwo == 3) || (choiceOne == 3 && choiceTwo == 2) || (choiceOne == 2 && choiceTwo == 1) || (choiceOne == 1 && choiceTwo == 4) || (choiceOne == 4 && choiceTwo == 5) || (choiceOne == 5 && choiceTwo == 3) || (choiceOne == 3 && choiceTwo == 4) || (choiceOne == 4 && choiceTwo == 2) || (choiceOne == 2 && choiceTwo == 5) || (choiceOne == 5 && choiceTwo == 1))
-        //    {
-        //        scoreOne += 1;
-        //        Console.WriteLine("Player 1 Wins The Round!");
-        //        Console.ReadLine();
-        //        Console.Clear();
-        //    }
-        //    else if(choiceOne == choiceTwo)
-        //    {
-        //        Console.WriteLine("The Round Ended In A Tie!");
-        //        Console.ReadLine();
-        //        Console.Clear();
-        //    }
-        //    else
-        //    {
-        //        scoreTwo += 1;
-        //        Console.WriteLine("Player 2 Wins The Round!");
-        //        Console.ReadLine();
-        //        Console.Clear();
-        //    }
-
-        //}
     }
 }
