@@ -114,7 +114,7 @@ namespace RPSLSGame
         {
             while (validInput == false)
             {
-                Console.WriteLine("Please select the amount of rounds you would like to play (Must be at least 3):"); // possibly create list of options instead
+                Console.WriteLine("Please select the amount of rounds you would like to play (Must be at least 3):");
                 userRoundsChoice = Console.ReadLine();
                 validRoundInput = int.TryParse(userRoundsChoice, out roundsToPlay);
                 Console.Clear();
