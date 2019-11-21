@@ -13,7 +13,7 @@ namespace RPSLSGame
         string choiceOne;
         string choiceTwo;
         string whoToPlay;
-        bool validGameStart;
+        bool validInput;
         bool playAgain;
         public Player player1;
         public Player player2;
@@ -23,8 +23,8 @@ namespace RPSLSGame
         {
             scoreOne = 0;
             scoreTwo = 0;
-            validGameStart = false;
-            playAgain = false;
+            validInput = false;
+            playAgain = true;
             player1 = new Human();
 
             //Console.WriteLine("Who would you like to play? Please enter 'friend' or 'computer':");
@@ -61,18 +61,18 @@ namespace RPSLSGame
                 Console.WriteLine("Who would you like to play? Please enter 'friend' or 'computer':");
                 whoToPlay = Console.ReadLine().ToLower();
 
-                while (validGameStart == false)
+                while (validInput == false)
                 {
                     switch (whoToPlay)
                     {
                         case "friend":
                             Console.Clear();
-                            validGameStart = true;
+                            validInput = true;
                             player2 = new Human();
                             break;
                         case "computer":
                             Console.Clear();
-                            validGameStart = true;
+                            validInput = true;
                             player2 = new AI();
                             break;
                         default:
@@ -83,6 +83,8 @@ namespace RPSLSGame
                             break;
                     }
                 }
+
+                validInput = false;
 
                 player1.ChooseName();
                 Console.Clear();
@@ -108,7 +110,7 @@ namespace RPSLSGame
                     if ((choiceOne == "rock" && choiceTwo == "scissors") || (choiceOne == "scissors" && choiceTwo == "paper") || (choiceOne == "paper" && choiceTwo == "rock") || (choiceOne == "rock" && choiceTwo == "lizard") || (choiceOne == "lizard" && choiceTwo == "spock") || (choiceOne == "spock" && choiceTwo == "scissors") || (choiceOne == "scissors" && choiceTwo == "lizard") || (choiceOne == "lizard" && choiceTwo == "paper") || (choiceOne == "paper" && choiceTwo == "spock") || (choiceOne == "spock" && choiceTwo == "rock"))
                     {
                         scoreOne += 1;
-                        Console.WriteLine("Player 1 Wins The Round!");
+                        Console.WriteLine(player1.name + " Wins The Round!");
                         Console.ReadLine();
                         Console.Clear();
                     }
@@ -121,7 +123,7 @@ namespace RPSLSGame
                     else
                     {
                         scoreTwo += 1;
-                        Console.WriteLine("Player 2 Wins The Round!");
+                        Console.WriteLine(player2.name " Wins The Round!");
                         Console.ReadLine();
                         Console.Clear();
                     }
@@ -130,16 +132,43 @@ namespace RPSLSGame
                 if (scoreOne > scoreTwo)
                 {
                     Console.Clear();
-                    Console.WriteLine("Player 1 Wins The Game!");
+                    Console.WriteLine(player1.name " Wins The Game!");
                     Console.ReadLine();
                 }
                 else
                 {
                     Console.Clear();
-                    Console.WriteLine("Player 2 Wins The Game!");
+                    Console.WriteLine(player2.name + " Wins The Game!");
                     Console.ReadLine();
                 }
 
+                while (validInput == false)
+                {
+                    Console.Clear();
+                    Console.WriteLine("Would you like to play again? Please enter yes or no:");
+                    string replayDescision = Console.ReadLine();
+
+                    switch (replayDescision)
+                    {
+                        case "yes":
+                            scoreOne = 0;
+                            scoreTwo = 0;
+                            validInput = true;
+                            player1 = new Human();
+                            break;
+                        case "no":
+                            validInput = true;
+                            playAgain = false;
+                            break;
+                        default:
+                            Console.WriteLine("Invalid input, please try again.");
+                            Console.ReadLine();
+                            Console.Clear();
+                            break;
+                    }
+                }
+
+                validInput = false;
             }
         }
     }
